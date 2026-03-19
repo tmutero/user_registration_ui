@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -24,13 +24,11 @@ export class LoginComponent implements OnInit {
   title = 'Login';
   loginForm!: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private titleService: Title,
-    public auth: AuthService,
-    private toasterService: ToastrService,
-  ) {}
+  private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
+  private titleService = inject(Title);
+  public auth = inject(AuthService);
+  private toasterService = inject(ToastrService);
 
   get f() {
     return this.loginForm.controls;

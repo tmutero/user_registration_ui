@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -18,17 +18,14 @@ export class AuthService {
 
   public apiUrl = environment.apiUrl;
   public staffUser = false;
-  public currentUser!: UserModel;
   public impersonated = false;
   public dateJoined!: any;
 
-  constructor(
-    protected httpClient: HttpClient,
-    private router: Router,
-    private toasterService: ToastrService,
-  ) {
-    this.currentUser = this.getCurrentUserDetails();
-  }
+  protected httpClient = inject(HttpClient);
+  private router = inject(Router);
+  private toasterService = inject(ToastrService);
+
+  public currentUser: UserModel = this.getCurrentUserDetails();
 
   login(loginModel: any): Observable<any> {
     const headers = new HttpHeaders({

@@ -14,18 +14,17 @@ export const routes: Routes = [
       ),
   },
   {
-    path: "register",
-    component: RegisterComponent
+    path: 'register',
+    component: RegisterComponent,
   },
   {
-    path: "home",
+    path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
-
   },
   {
-    path: "**",
-    pathMatch: "full",
-    component: NotFoundComponent
-  }
+    path: '**',
+    pathMatch: 'full',
+    component: NotFoundComponent,
+  },
 ];

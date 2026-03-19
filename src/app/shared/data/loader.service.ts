@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { defer, NEVER, Subject } from "rxjs";
-import { finalize, share } from "rxjs/operators";
-import { LoaderState } from "./loaderstate.model";
+import { Injectable } from '@angular/core';
+import { defer, NEVER, Subject } from 'rxjs';
+import { finalize, share } from 'rxjs/operators';
+import { LoaderState } from './loaderstate.model';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class LoaderService {
   public readonly spinner$ = defer(() => {
@@ -12,7 +12,7 @@ export class LoaderService {
     return NEVER.pipe(
       finalize(() => {
         this.hide();
-      })
+      }),
     );
   }).pipe(share());
 
