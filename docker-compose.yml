@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  user-registration-ui-web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: user-registration-ui-web-dev
+    ports:
+      - "${DEV_PORT:-4200}:4200"   
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.angular
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start
+    networks:
+      - user-registration-ui-network
+
+networks:
+  user-registration-ui-network:
+    driver: bridge
+

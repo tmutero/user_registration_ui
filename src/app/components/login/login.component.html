@@ -1,0 +1,61 @@
+<section class="bg-light d-flex justify-content-center align-items-center min-vh-100">
+  <div class="container">
+    <div class="row gy-4 align-items-center">
+      <div class="col-12 col-md-6 col-xl-7">
+        <div class="d-flex justify-content-center p-4 rounded-4">
+          <div class="col-12 col-xl-9">
+            <h6 class="h3 mb-4">User Registration.
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-5">
+        <div class="card border-0 rounded-4">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+            <div class="row">
+              <div class="col-12">
+
+                <div class="mb-4">
+                  <h3>Sign in</h3>
+                  <p>Don't have an account? <a (click)="onBtnRegisterClick()" class="text-primary">Sign up</a></p>
+                </div>
+              </div>
+            </div>
+            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+              <div class="row gy-3 overflow-hidden">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input class="form-control" formControlName="email" id="email" name="email"
+                      placeholder="name@example.com" required type="email">
+                    <label class="form-label" for="email">Email</label>
+                    <small *ngIf=" f['email'].invalid && (f['email'].touched || f['email'].dirty) "
+                      class="form-text text-danger">
+                      email is a required field.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input class="form-control" formControlName="password" id="password" name="password"
+                      placeholder="Password" type="password" value="">
+                    <label class="form-label" for="password">Password</label>
+                    <small *ngIf="f['password'].invalid && (f['password'].touched || f['password'].dirty)"
+                      class="form-text text-danger">Password is a
+                      required field.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button [disabled]="loginForm.invalid" class="btn btn-primary btn-lg" type="submit">Log in
+                      now</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
